@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/header_cover_image"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginBottom="3dp"
+            android:scaleType="centerCrop"
+            android:background="#efefef"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/user_profile_photo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/header_cover_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-120dp"
+            android:elevation="20dp"
+            app:cardCornerRadius="75dp">
+            <FrameLayout android:layout_height="match_parent"
+                android:layout_width="match_parent">
+
+            <ImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/propic"
+                android:visibility="visible" />
+
+                <ImageView
+                    android:src="@drawable/circular_imageview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </FrameLayout>
+        </android.support.v7.widget.CardView>
+
+        <RelativeLayout
+            android:id="@+id/profile_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header_cover_image"
+            android:background="@color/colorPrimary"
+            android:paddingBottom="24dp">
+
+            <TextView
+                android:id="@+id/edit_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="35dp"
+                android:text="Edit Profile"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:textStyle="italic"
+
+                />
+            <TextView
+                android:id="@+id/user_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="55dp"
+                android:text="IEEEMadCUser"
+                android:textColor="#fff"
+                android:textSize="24sp"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/designation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/user_profile_name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:padding="10dp"
+                android:text="Student at CV Raman College of Engineering"
+                android:textColor="#fff"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_layout"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#fff"
+                android:clickable="true"
+                android:padding="15dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Basic Details" />
+
+            <TextView
+                android:id="@+id/aboutme"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#fff"
+                android:clickable="true"
+                android:padding="15dp"
+                android:textSize="7pt"
+                android:text="@string/aboutme" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/githublink"
+                android:text="www.github.com/jitunayak"
+                android:drawableLeft="@drawable/weblink_icon"
+                android:padding="20dp"
+                android:drawablePadding="20dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/contact"
+                android:text="1234567890"
+                android:drawableLeft="@drawable/weblink_icon"
+                android:padding="20dp"
+                android:drawablePadding="20dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="jitunayak715@gmail.com"
+                android:drawableLeft="@drawable/mail_icon"
+                android:padding="20dp"
+                android:drawablePadding="20dp"
+                android:id="@+id/email"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="C.V.Raman, Bhubaneswar\nMahura\nOdisha\nPIN : 752056"
+                android:drawableLeft="@drawable/home_icon"
+                android:padding="20dp"
+                android:drawablePadding="20dp"
+                android:id="@+id/organization"
+                />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#fff"
+                android:padding="15dp"
+                android:textSize="20sp"
+                android:text="Skills" />
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:layout_margin="5dp"
+                android:background="#fff"
+                >
+                <android.support.design.chip.ChipGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/skillGroup">
+
+                </android.support.design.chip.ChipGroup>
+
+            </ScrollView>
+
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#fff"
+                android:clickable="true"
+                android:padding="15dp"
+                android:textSize="20sp"
+                android:elevation="4dp"
+                android:text="Log Out"
+                android:id="@+id/logOutBtn"/>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

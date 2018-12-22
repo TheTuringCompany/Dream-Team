@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".RegistrationActivity"
+        android:gravity="center"
+        android:padding="5dp"
+        android:id="@+id/relativeLayout"
+        >
+        <TextView
+            android:layout_width="290dp"
+            android:id="@+id/textView"
+            android:gravity="center"
+            android:layout_height="50dp"
+            android:text="Choose your skill set"/>
+
+
+
+        <android.support.design.chip.ChipGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/interests"
+            android:layout_below="@id/textView">
+
+        </android.support.design.chip.ChipGroup>
+        <Button
+            android:layout_width="290dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/interests"
+            android:id="@+id/registerBtn"
+            android:layout_centerHorizontal="true"
+            android:text="REGISTER"/>
+
+
+
+    </RelativeLayout>
+
+</ScrollView>

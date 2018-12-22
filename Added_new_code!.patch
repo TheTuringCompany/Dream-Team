@@ -1,0 +1,130 @@
+Index: app/src/main/java/com/teamturing/dreamteam/LoginActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/teamturing/dreamteam/LoginActivity.java	(revision b7bf70a634b905f82a7ccaf2714a4a6a6f64addb)
++++ app/src/main/java/com/teamturing/dreamteam/LoginActivity.java	(date 1544862087213)
+@@ -103,7 +103,14 @@
+ 
+                 mProgressDialog.setMessage("Checking User....");
+                 mProgressDialog.show();
+-               new CheckingUser().execute(account.getEmail());
++                credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
++                firebaseAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
++                    @Override
++                    public void onComplete(@NonNull Task<AuthResult> task) {
++                        new CheckingUser().execute(account.getEmail());
++                    }
++                });
++
+ 
+ 
+ 
+@@ -122,30 +129,25 @@
+             FirebaseDatabase database = FirebaseDatabase.getInstance();
+             DatabaseReference databaseReference = database.getReference().child("Techie");
+ 
++            if(databaseReference!=null)
++            {
++                Log.e("Database Reference","Reference IS NOT NULL");
++            }else{
++                Log.e("Database Reference","Reference IS  NULL");
++            }
+             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                 @Override
+                 public void onDataChange(DataSnapshot dataSnapshot) {
+-                    for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+-                    {
+-                        Log.e("Coming Here","Inside For LOOP");
+-                        emailInDatabase = dataSnapshot1.child("email").getValue().toString();
+-                        if(emailChoosen[0].equals(emailInDatabase))
+-                        {
+-                            Log.e("Comming here too",emailInDatabase);
+-                            mProgressDialog.dismiss();
+-                            checkEmail=true;
+-                            break;
+-                        }
+-
+-                    }
+-
+-                    if(checkEmail)
+-                    {
+-                        signInDirectly();
+-                    }else{
+-                        goToRegistration();
+-                    }
++                    Log.e("Datasnap",dataSnapshot.getChildren().toString());
++                   if( dataSnapshot.hasChild(firebaseAuth.getCurrentUser().getUid()))
++                   {
++                       signInDirectly();
++                   }else {
++                       goToRegistration();
++                   }
+ 
++
++
+                 }
+ 
+                 @Override
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision b7bf70a634b905f82a7ccaf2714a4a6a6f64addb)
++++ app/src/main/AndroidManifest.xml	(date 1544859395538)
+@@ -16,11 +16,7 @@
+         <activity
+             android:name=".MainActivity"
+             android:label="@string/app_name">
+-            <intent-filter>
+-                <action android:name="android.intent.action.MAIN" />
+ 
+-                <category android:name="android.intent.category.LAUNCHER" />
+-            </intent-filter>
+ 
+         </activity>
+ 
+@@ -31,7 +27,11 @@
+         <activity android:name=".RegistrationActivity">
+         </activity>
+         <activity android:name=".LoginActivity" >
++            <intent-filter>
++                <action android:name="android.intent.action.MAIN" />
+ 
++                <category android:name="android.intent.category.LAUNCHER" />
++            </intent-filter>
+         </activity>
+         <activity android:name=".FilterInterest">
+         </activity>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision b7bf70a634b905f82a7ccaf2714a4a6a6f64addb)
++++ .idea/misc.xml	(date 1544860919712)
+@@ -25,7 +25,7 @@
+       </value>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+diff --git .idea/caches/build_file_checksums.ser .idea/caches/build_file_checksums.ser
+index 8518491a74eb19bf4af9d84da77c341ebdd1e45a..dd67f1c0bf00d58d9ec245d536ffcb99fff9b351
+GIT binary patch
+literal 544
+zc${1FmVvdnh`~NNKUXg?FQq6yGexf?KR>5fFEb@IQ7^qHF(oHeub?PDD>b=9F91S2
+zm1gFoxMk*~I%lLNXBU^|7Q2L-Ts|(GuF1r}<i#MFTj`TnT;dMa8(f)}9Fm!vT3nKt
+zTj0aMpIeEdv4nx&Co8cmQNOe#Ge_SyvB0{bfPsNAeZ!p}bwGCsg5>l-a(W(##Th_(
+zR`y#54~r#SWM*J;W8likPfT%3OfJbU@?_vF$tX%K&dAS6sVJ~_U;qK0at<IV0K{x1
+z3<8M-1u;n=r$fC}TExH<?X>2z_zyOYkOxc*3?Qo+1kP}<h-C*Pp1-(d(yMjf9p?j`
+zSe#l?l9`uY4AWT1P{+UqQakTv!ake(?0LEgdQ#y|hZmMG=sR1*gche36~_c6W&@q0
+z5L}*^nHK}q8G{JWg4Cjt%+z9pSyyCxZuT>5VtLuXIpfU_r@9gb9u(KY6)sn}zxa{f
+zjtMFIwIw&p%O?T7mXn{Hn1j{SCo`@!?pw9{VeZMpy53iFl1mr_@wnl0FY~HB2}}Jp
+N*`^skJ1dY>0RYNx!GQn(
+

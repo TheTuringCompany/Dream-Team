@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Dream Team</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="Eventdescription">Smart India Hackathon 2019 is a nationwide initiative to provide students a platform to solve some of pressing
+                problems we face in our daily lives, and thus inculcate a culture of product innovation and a mindset
+                of problem solving.  </string>
+    <string name="facebook_app_id">1919134854802907</string>
+    <string name="fb_login_protocol_scheme">fb1919134854802907</string>
+    <string-array name="number">
+        <item>One Member</item>
+        <item>two Member</item>
+        <item>Three Member</item>
+        <item>Four Member</item>
+    </string-array>
+    <string name="choose" />
+    <string name="aboutme">Hi,I am a Techie</string>
+</resources>
